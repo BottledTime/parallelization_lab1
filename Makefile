@@ -1,9 +1,6 @@
 CC=gcc
-CFLAGS=-g -Wall -lpthread
-DEPS = lab1_IO.h timer.h # put .h dependencies here
+CFLAGS=-g -Wall -lpthread -lm
+DEPS = lab1_IO.c # put .h dependencies here
 
-%.o: %.c $(DEPS)
-	$(CC) -c -o $@ $< $(CFLAGS)
-
-main: main.o #lab1_IO.o
-	$(CC) -o main main.o $(CFLAGS)
+pth_BlockMatMult: pth_BlockMatMult.c $(DEPS)#lab1_IO.o
+	$(CC) -o pth_BlockMatMult pth_BlockMatMult.c $(DEPS) $(CFLAGS)
