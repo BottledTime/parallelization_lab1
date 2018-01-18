@@ -43,6 +43,7 @@
 #include <stdlib.h>
 #include <pthread.h>
 #include <math.h>
+#include "timer.h"
 #include "lab1_IO.h"
 
 /* Declare variables
@@ -53,6 +54,7 @@ int n, m;
 int** A;
 int** B;
 int** C;
+double start, end;
    
 /* Function prototypes */
 /* Serial functions */
@@ -109,6 +111,9 @@ int main(int argc, char* argv[]){
      Print_matrix("We read", B, n, n);
     */
    
+   // Time measurement
+   GET_TIME(start);
+      
    // create each thread and run function in it
    for (thread=0; thread < thread_count; thread++){
       // create thread
@@ -120,11 +125,14 @@ int main(int argc, char* argv[]){
       pthread_join(thread_handles[thread],NULL);
    } // end for
    
+   // Time measurement
+   GET_TIME(end);
+   
    // Print output
    // Print_matrix("The result is", C, n, n);
    
    // Save output
-   Lab1_saveoutput(C, &n, 0.0);
+   Lab1_saveoutput(C, &n, end-start);
    
    // Free memory
    free(A);
