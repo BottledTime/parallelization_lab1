@@ -1,2 +1,16 @@
 # Instructions to compile source files
    On command window, type "make".
+   If that doesn't work for some reason on your system, type
+   "gcc -o main pth_BlockMatMult.c lab1_IO.c -g -Wall -lpthread -lm".
+
+   Once it is compiled, if you would like to test it, compile the matrixgen.c
+   file (provided in the lab 1 dev kit) with "gcc matrixgen.c -o matrixgen".
+   Use that to generate a matrix (using the instructions from the comments of
+   that file).
+
+   Next, run our program's executable by typing "./main <number of threads>".
+
+   Finally, you can use the serialtester by compiling the serialtester.c file
+   (also provided by the lab 1 dev kit) with
+   "gcc serialtester.c lab1_IO.c -o serialtester". Then run the executable
+   with "./serialtester"
